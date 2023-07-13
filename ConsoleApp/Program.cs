@@ -1,96 +1,150 @@
 ﻿using System.Globalization;
 
-int a = 11;
-int b = 3;
+int a = 1;
+int b = 2;
+int c = 3;
+int d = 4;
+//tworzymy tablicę 6 elementową
+int[] intArray = { a, b, c, d, 45, 12 };
 
-int c = a + b;
-Console.WriteLine($"{a} + {b} = {c}");
-c = a - b;
-Console.WriteLine($"{a} - {b} = {c}");
-c = a * b;
-Console.WriteLine($"{a} * {b} = {c}");
-//przy dzieleniu intów część dzisiętna jest ucinana
-c = a / b;
-Console.WriteLine($"{a} / {b} = {c}");
-c = a % b;
-Console.WriteLine($"{a} % {b} = {c}");
+Console.WriteLine(intArray[2]);
+//wybranie ostatniego elementu tablicy
+Console.WriteLine(intArray[intArray.Length - 1]);
 
-//c# zachowuje kolejność działań
-c = a + a * a;
-Console.WriteLine($"{a} + {a} * {a} = {c}");
-c = (a + a) * a;
-Console.WriteLine($"({a} + {a}) * {a} = {c}");
+intArray[2] = 99;
+Console.WriteLine(intArray[2]);
 
+//utworzylismy pustą tablicę o rozmiarze 2
+//pusta tablica - wypełniona wartościami domyślnymi
+intArray = new int[2];
 
-float aa = 11.0f;
-float bb = 3f;
-float cc = aa + bb;
-Console.WriteLine($"{aa} + {bb} = {cc}");
-cc = aa - bb;
-Console.WriteLine($"{aa} - {bb} = {cc}");
-cc = aa * bb;
-Console.WriteLine($"{aa} * {bb} = {cc}");
-cc = aa / bb;
-Console.WriteLine($"{aa} / {bb} = {cc}");
+//string to tablica char[]
+Console.WriteLine("ala ma kota"[2]);
 
-Console.WriteLine($"int min: {int.MinValue} max: {int.MaxValue}");
-Console.WriteLine($"long min: {long.MinValue} max: {long.MaxValue}");
+//zmiana rozmiaru rablicy - powoduje utworzenie nowej na podstawie wskazanej i przepięcie referencji
+Array.Resize(ref intArray, 4);
+Console.WriteLine(intArray[3]);
 
 
-Console.WriteLine($"float min: {float.MinValue} max: {float.MaxValue}");
-Console.WriteLine($"double min: {double.MinValue} max: {double.MaxValue}");
-Console.WriteLine($"decimal min: {decimal.MinValue} max: {decimal.MaxValue}");
+//utworzenie nowej pustej listy
+List<float> floatList = new List<float>();
 
-//dzielenie int przez float/double/decimal (albo odwrotnie) daje wynik o typie z wyższą precyzją
-Console.WriteLine(11 / 3f);
-Console.WriteLine(11 / 3d);
-Console.WriteLine(11 / 3m);
+floatList.Add(3.14f);
+floatList.Add(5f);
+floatList.Add(1f);
+floatList.Add(7.23f);
+floatList.Add(3.2f);
 
-//zaokrąglanie
-Console.WriteLine(Math.Round(3f/2f, 0, MidpointRounding.AwayFromZero));
+Console.WriteLine(floatList[2]);
 
-//przepelenienie int
-a = int.MaxValue;
-Console.WriteLine(a);
-a = a + 1;
-Console.WriteLine(a);
+//usuwanie wartości 5
+floatList.Remove(5);
 
-long longValue;
-int intValue = int.MaxValue;
-
-longValue = intValue;
-
-//rzutowanie
-intValue = (int)longValue;
-Console.WriteLine(intValue);
-
-//rzutowanie może przekłamać wynik, jęsli wartość jest spoza zakresu typu na który rzutujemy
-longValue = 2 * longValue;
-intValue = (int)longValue;
-Console.WriteLine(intValue);
-
-longValue = 1000000000000L;
-intValue =(int) longValue;
-Console.WriteLine(intValue);
-
-double doubleValue = 4.43543d;
-float floatValue = (float)doubleValue;
+//usuwanie elementu o index 2
+floatList.RemoveAt(2);
 
 
-string doubleString = doubleValue.ToString();
-Console.WriteLine(doubleString);
+floatList = new List<float>() { intArray[0], 13, floatList[2] };
+Console.WriteLine(floatList[0]);
+Console.WriteLine(floatList[1]);
+Console.WriteLine(floatList[2]);
 
-//parsowanie/konwertowanie string na float
-string input = Console.ReadLine();
-floatValue = float.Parse(input);
-floatValue = floatValue + 2;
-Console.WriteLine(floatValue);
+floatList.Clear();
 
-//parsowanie/konwertowanie string na int
-input = Console.ReadLine();
-intValue = int.Parse(input);
-intValue = intValue + 2;
-Console.WriteLine(intValue);
+void Numbers()
+{
+    int a = 11;
+    int b = 3;
+
+    int c = a + b;
+    Console.WriteLine($"{a} + {b} = {c}");
+    c = a - b;
+    Console.WriteLine($"{a} - {b} = {c}");
+    c = a * b;
+    Console.WriteLine($"{a} * {b} = {c}");
+    //przy dzieleniu intów część dzisiętna jest ucinana
+    c = a / b;
+    Console.WriteLine($"{a} / {b} = {c}");
+    c = a % b;
+    Console.WriteLine($"{a} % {b} = {c}");
+
+    //c# zachowuje kolejność działań
+    c = a + a * a;
+    Console.WriteLine($"{a} + {a} * {a} = {c}");
+    c = (a + a) * a;
+    Console.WriteLine($"({a} + {a}) * {a} = {c}");
+
+
+    float aa = 11.0f;
+    float bb = 3f;
+    float cc = aa + bb;
+    Console.WriteLine($"{aa} + {bb} = {cc}");
+    cc = aa - bb;
+    Console.WriteLine($"{aa} - {bb} = {cc}");
+    cc = aa * bb;
+    Console.WriteLine($"{aa} * {bb} = {cc}");
+    cc = aa / bb;
+    Console.WriteLine($"{aa} / {bb} = {cc}");
+
+    Console.WriteLine($"int min: {int.MinValue} max: {int.MaxValue}");
+    Console.WriteLine($"long min: {long.MinValue} max: {long.MaxValue}");
+
+
+    Console.WriteLine($"float min: {float.MinValue} max: {float.MaxValue}");
+    Console.WriteLine($"double min: {double.MinValue} max: {double.MaxValue}");
+    Console.WriteLine($"decimal min: {decimal.MinValue} max: {decimal.MaxValue}");
+
+    //dzielenie int przez float/double/decimal (albo odwrotnie) daje wynik o typie z wyższą precyzją
+    Console.WriteLine(11 / 3f);
+    Console.WriteLine(11 / 3d);
+    Console.WriteLine(11 / 3m);
+
+    //zaokrąglanie
+    Console.WriteLine(Math.Round(3f / 2f, 0, MidpointRounding.AwayFromZero));
+
+    //przepelenienie int
+    a = int.MaxValue;
+    Console.WriteLine(a);
+    a = a + 1;
+    Console.WriteLine(a);
+
+    long longValue;
+    int intValue = int.MaxValue;
+
+    longValue = intValue;
+
+    //rzutowanie
+    intValue = (int)longValue;
+    Console.WriteLine(intValue);
+
+    //rzutowanie może przekłamać wynik, jęsli wartość jest spoza zakresu typu na który rzutujemy
+    longValue = 2 * longValue;
+    intValue = (int)longValue;
+    Console.WriteLine(intValue);
+
+    longValue = 1000000000000L;
+    intValue = (int)longValue;
+    Console.WriteLine(intValue);
+
+    double doubleValue = 4.43543d;
+    float floatValue = (float)doubleValue;
+
+
+    string doubleString = doubleValue.ToString();
+    Console.WriteLine(doubleString);
+
+    //parsowanie/konwertowanie string na float
+    string input = Console.ReadLine();
+    floatValue = float.Parse(input);
+    floatValue = floatValue + 2;
+    Console.WriteLine(floatValue);
+
+    //parsowanie/konwertowanie string na int
+    input = Console.ReadLine();
+    intValue = int.Parse(input);
+    intValue = intValue + 2;
+    Console.WriteLine(intValue);
+}
 
 
 void StringDemo()
