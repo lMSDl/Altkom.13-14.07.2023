@@ -1,4 +1,99 @@
 ﻿using System.Globalization;
+
+int a = 11;
+int b = 3;
+
+int c = a + b;
+Console.WriteLine($"{a} + {b} = {c}");
+c = a - b;
+Console.WriteLine($"{a} - {b} = {c}");
+c = a * b;
+Console.WriteLine($"{a} * {b} = {c}");
+//przy dzieleniu intów część dzisiętna jest ucinana
+c = a / b;
+Console.WriteLine($"{a} / {b} = {c}");
+c = a % b;
+Console.WriteLine($"{a} % {b} = {c}");
+
+//c# zachowuje kolejność działań
+c = a + a * a;
+Console.WriteLine($"{a} + {a} * {a} = {c}");
+c = (a + a) * a;
+Console.WriteLine($"({a} + {a}) * {a} = {c}");
+
+
+float aa = 11.0f;
+float bb = 3f;
+float cc = aa + bb;
+Console.WriteLine($"{aa} + {bb} = {cc}");
+cc = aa - bb;
+Console.WriteLine($"{aa} - {bb} = {cc}");
+cc = aa * bb;
+Console.WriteLine($"{aa} * {bb} = {cc}");
+cc = aa / bb;
+Console.WriteLine($"{aa} / {bb} = {cc}");
+
+Console.WriteLine($"int min: {int.MinValue} max: {int.MaxValue}");
+Console.WriteLine($"long min: {long.MinValue} max: {long.MaxValue}");
+
+
+Console.WriteLine($"float min: {float.MinValue} max: {float.MaxValue}");
+Console.WriteLine($"double min: {double.MinValue} max: {double.MaxValue}");
+Console.WriteLine($"decimal min: {decimal.MinValue} max: {decimal.MaxValue}");
+
+//dzielenie int przez float/double/decimal (albo odwrotnie) daje wynik o typie z wyższą precyzją
+Console.WriteLine(11 / 3f);
+Console.WriteLine(11 / 3d);
+Console.WriteLine(11 / 3m);
+
+//zaokrąglanie
+Console.WriteLine(Math.Round(3f/2f, 0, MidpointRounding.AwayFromZero));
+
+//przepelenienie int
+a = int.MaxValue;
+Console.WriteLine(a);
+a = a + 1;
+Console.WriteLine(a);
+
+long longValue;
+int intValue = int.MaxValue;
+
+longValue = intValue;
+
+//rzutowanie
+intValue = (int)longValue;
+Console.WriteLine(intValue);
+
+//rzutowanie może przekłamać wynik, jęsli wartość jest spoza zakresu typu na który rzutujemy
+longValue = 2 * longValue;
+intValue = (int)longValue;
+Console.WriteLine(intValue);
+
+longValue = 1000000000000L;
+intValue =(int) longValue;
+Console.WriteLine(intValue);
+
+double doubleValue = 4.43543d;
+float floatValue = (float)doubleValue;
+
+
+string doubleString = doubleValue.ToString();
+Console.WriteLine(doubleString);
+
+//parsowanie/konwertowanie string na float
+string input = Console.ReadLine();
+floatValue = float.Parse(input);
+floatValue = floatValue + 2;
+Console.WriteLine(floatValue);
+
+//parsowanie/konwertowanie string na int
+input = Console.ReadLine();
+intValue = int.Parse(input);
+intValue = intValue + 2;
+Console.WriteLine(intValue);
+
+
+void StringDemo()
 {
     // C# wspiera przeciążanie funkcji
     // jedna nazwa może być prztpisana do wielu funkcjonalności, jeśli różnią się one parametrami
@@ -79,4 +174,9 @@
     string sentence = "ala ma kota";
     sentence = sentence.Substring(0, sentence.Length - 1);
     Console.WriteLine(sentence);
+    
+    //porównanie stringów
+    Console.WriteLine("a" == "A");
+    //porównanie z ignorowaniem wielkości liter
+    Console.WriteLine(string.Compare("a", "A", true) == 0);
 }
