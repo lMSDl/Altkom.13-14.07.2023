@@ -51,6 +51,12 @@ Console.WriteLine(floatList[2]);
 
 floatList.Clear();
 
+
+string input = Console.ReadLine();
+string[] strings = input.Split(" ");
+Console.WriteLine(strings[strings.Length - 1]);
+
+
 void Numbers()
 {
     int a = 11;
