@@ -7,13 +7,14 @@ Console.WriteLine(   item.GetValue());
 item.SetValue(5);
 Console.WriteLine(item.GetValue());
 
-
 Console.WriteLine(item.Quantity);
 item.Quantity = 323;
 Console.WriteLine(item.Quantity);
 
 
-Item item2 = new Item();
+Item item2 = new Item(23, 12, "");
+Console.WriteLine(item2.GetValue());
+Console.WriteLine(item2.Quantity);
 
 
 
