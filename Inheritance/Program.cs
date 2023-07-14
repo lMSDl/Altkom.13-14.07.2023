@@ -1,6 +1,7 @@
 ﻿
 
 using Inheritance.Models;
+using Inheritance.Models.DB;
 
 //Shape shape = new Shape("shape1");
 //Shape1D shape1d = new Shape1D(12, "shape2");
@@ -32,7 +33,20 @@ List<Shape2D> shapes2d = new List<Shape2D>();
 shapes.Add(rectangle);
 shapes.Add(elipse);
 
-foreach (Shape2D shape in shapes)
+foreach (Shape2D shape in shapes2d)
 {
     Console.WriteLine(shape.GetArea());
+}
+
+
+Person person = new Person();
+SetPesel(person.PersonalData, 1702129876);
+
+
+Console.WriteLine(person.Age);
+
+
+void SetPesel(PersonalData personalData, long pesel)
+{
+    personalData.PESEL = pesel;
 }
