@@ -1,186 +1,245 @@
 ﻿using System.Globalization;
 
-Console.WriteLine("Jak masz na imię?");
-string input = Console.ReadLine();
+//sprawdzamy, czy sekunda na zegarze jest przysta
+bool exit = DateTime.Now.Second % 2 == 0;
 
-/*if (input == "")
-{
-    Console.WriteLine("Szkoda, że nie chcesz go podać...");
-}
-else if (input == "Siri" || input == "Google")
-{
-    Console.WriteLine("Hej masz na imię tak jak elektroniczny asystent!");
-}
-else if (input == "Alexa")
-{
-    Console.WriteLine("Hej masz na imię tak jak elektroniczny asystent Amazona!");
-}
-else
-{
-    Console.WriteLine($"Witaj, {input}!");
-}*/
+//pętla while sprawdza warunek przez wejściem do ciała (może się nigdy nie wkonać)
 
-switch (input)
+while (!exit)
 {
-    case "":
+    Console.Write("while: ");
+    string input = Console.ReadLine();
+
+    switch (input)
+    {
+        case "exit":
+            exit = true;
+            break;
+        default:
+            Console.WriteLine(input);
+            break;
+    }
+
+}
+
+exit = false;
+//do-while - sprawdza warunek po wykonaniu ciała - zapewnie wykonanie co najmniej raz
+do
+{
+    Console.Write("do-while: ");
+    string input = Console.ReadLine();
+
+    if (input == "exit")
+    {
+        exit = true;
+    }
+    else if(input == "break")
+    {
+        //break przerywa wykonywanie ciała pętli i całą pętle
+        break;
+    }
+    else if (input == "continue")
+    {
+        //continue przerywa wykonywanie ciała i kontynuuje pętle (przechodzi do sprawdzenia warunku)
+        continue;
+    }
+    else
+    {
+        Console.WriteLine(input);
+    }
+
+    Console.WriteLine("End of do-while");
+} while (!exit);
+
+Console.WriteLine("End of program");
+
+
+void SwitchDemo()
+{
+
+    Console.WriteLine("Jak masz na imię?");
+    string input = Console.ReadLine();
+
+    /*if (input == "")
+    {
         Console.WriteLine("Szkoda, że nie chcesz go podać...");
-        break;
-    case "Siri":
-    case "Google":
+    }
+    else if (input == "Siri" || input == "Google")
+    {
         Console.WriteLine("Hej masz na imię tak jak elektroniczny asystent!");
-        break;
-    case "Alexa":
+    }
+    else if (input == "Alexa")
+    {
         Console.WriteLine("Hej masz na imię tak jak elektroniczny asystent Amazona!");
-        break;
-    default:
+    }
+    else
+    {
         Console.WriteLine($"Witaj, {input}!");
-        break;
+    }*/
+
+    switch (input)
+    {
+        case "":
+            Console.WriteLine("Szkoda, że nie chcesz go podać...");
+            break;
+        case "Siri":
+        case "Google":
+            Console.WriteLine("Hej masz na imię tak jak elektroniczny asystent!");
+            break;
+        case "Alexa":
+            Console.WriteLine("Hej masz na imię tak jak elektroniczny asystent Amazona!");
+            break;
+        //default - odpowiednik else
+        default:
+            Console.WriteLine($"Witaj, {input}!");
+            break;
+    }
+
 }
-
-
 
 
 void IfElseDemo()
+{
+
+    int value = int.Parse(Console.ReadLine());
+
+    // == - porównanie
+    // = - przypisanie
+    if (value == 0)
     {
+        Console.WriteLine("Wprowadzona wartość jest równa 0");
+    }
+    Console.WriteLine("--");
+    if (value > 0)
+    {
+        Console.WriteLine("Wprowadzona wartość jest większa niż 0");
+    }
+    else
+    {
+        Console.WriteLine("Wartość jest mniejsza lub równa 0");
+    }
 
-        int value = int.Parse(Console.ReadLine());
+    Console.WriteLine("--");
+    if (value > 0)
+    {
+        Console.WriteLine("Wprowadzona wartość jest większa niż 0");
+    }
+    else if (value < 0)
+    {
+        Console.WriteLine("Wprowadzona wartość jest mniejsza niż 0");
+    }
+    else
+    {
+        Console.WriteLine("Wartość jest równa 0");
+    }
 
-        // == - porównanie
-        // = - przypisanie
-        if (value == 0)
-        {
-            Console.WriteLine("Wprowadzona wartość jest równa 0");
-        }
-        Console.WriteLine("--");
-        if (value > 0)
-        {
-            Console.WriteLine("Wprowadzona wartość jest większa niż 0");
-        }
-        else
-        {
-            Console.WriteLine("Wartość jest mniejsza lub równa 0");
-        }
+    Console.WriteLine("--");
+    if (value > 0)
+    {
+        Console.WriteLine("Wprowadzona wartość jest większa niż 0");
+    }
+    if (value < 0)
+    {
+        Console.WriteLine("Wprowadzona wartość jest mniejsza niż 0");
+    }
 
-        Console.WriteLine("--");
-        if (value > 0)
-        {
-            Console.WriteLine("Wprowadzona wartość jest większa niż 0");
-        }
-        else if (value < 0)
-        {
-            Console.WriteLine("Wprowadzona wartość jest mniejsza niż 0");
-        }
-        else
-        {
-            Console.WriteLine("Wartość jest równa 0");
-        }
+    // ! - negacja
+    if (value != 0)
+    {
+        Console.WriteLine("Wprowadzona wartość jest różna od 0");
+    }
 
-        Console.WriteLine("--");
-        if (value > 0)
-        {
-            Console.WriteLine("Wprowadzona wartość jest większa niż 0");
-        }
-        if (value < 0)
-        {
-            Console.WriteLine("Wprowadzona wartość jest mniejsza niż 0");
-        }
-
-        // ! - negacja
-        if (value != 0)
-        {
-            Console.WriteLine("Wprowadzona wartość jest różna od 0");
-        }
-
-        // || - lub
-        if (value > 0 || value < 0)
-        {
-            Console.WriteLine("Wprowadzona wartość jest różna od 0");
-        }
-
-
-        if (value > 5 && value <= 10)
-        {
-            Console.WriteLine("Wprowadzona wartość jest z przedziału (5;10>");
-        }
-
-
-
-
-        string input = Console.ReadLine();
-        int intValue;
-
-        //TryParse zwraca informacje czy parsowanie się udało, jeśli tak to wartość trafia do parametru wyjściowego (out)
-        if (!int.TryParse(input, out intValue))
-        {
-            Console.WriteLine("Wprowadzonej wartości nie można przestawić jako int");
-        }
-        else
-        {
-            Console.WriteLine(intValue);
-        }
-
+    // || - lub
+    if (value > 0 || value < 0)
+    {
+        Console.WriteLine("Wprowadzona wartość jest różna od 0");
     }
 
 
-void Collections() { 
-
-int a = 1;
-int b = 2;
-int c = 3;
-int d = 4;
-//tworzymy tablicę 6 elementową
-int[] intArray = { a, b, c, d, 45, 12 };
-
-Console.WriteLine(intArray[2]);
-//wybranie ostatniego elementu tablicy
-Console.WriteLine(intArray[intArray.Length - 1]);
-
-intArray[2] = 99;
-Console.WriteLine(intArray[2]);
-
-//utworzylismy pustą tablicę o rozmiarze 2
-//pusta tablica - wypełniona wartościami domyślnymi
-intArray = new int[2];
-
-//string to tablica char[]
-Console.WriteLine("ala ma kota"[2]);
-
-//zmiana rozmiaru rablicy - powoduje utworzenie nowej na podstawie wskazanej i przepięcie referencji
-Array.Resize(ref intArray, 4);
-Console.WriteLine(intArray[3]);
+    if (value > 5 && value <= 10)
+    {
+        Console.WriteLine("Wprowadzona wartość jest z przedziału (5;10>");
+    }
 
 
-//utworzenie nowej pustej listy
-List<float> floatList = new List<float>();
-
-floatList.Add(3.14f);
-floatList.Add(5f);
-floatList.Add(1f);
-floatList.Add(7.23f);
-floatList.Add(3.2f);
-
-Console.WriteLine(floatList[2]);
-
-//usuwanie wartości 5
-floatList.Remove(5);
-
-//usuwanie elementu o index 2
-floatList.RemoveAt(2);
 
 
-floatList = new List<float>() { intArray[0], 13, floatList[2] };
-Console.WriteLine(floatList[0]);
-Console.WriteLine(floatList[1]);
-Console.WriteLine(floatList[2]);
+    string input = Console.ReadLine();
+    int intValue;
 
-floatList.Clear();
+    //TryParse zwraca informacje czy parsowanie się udało, jeśli tak to wartość trafia do parametru wyjściowego (out)
+    if (!int.TryParse(input, out intValue))
+    {
+        Console.WriteLine("Wprowadzonej wartości nie można przestawić jako int");
+    }
+    else
+    {
+        Console.WriteLine(intValue);
+    }
+
+}
 
 
-string input = Console.ReadLine();
-string[] strings = input.Split(" ");
-Console.WriteLine(strings[strings.Length - 1]);
-Array.Reverse(strings);
-Console.WriteLine(   string.Join(" ", strings)  );
+void Collections()
+{
+
+    int a = 1;
+    int b = 2;
+    int c = 3;
+    int d = 4;
+    //tworzymy tablicę 6 elementową
+    int[] intArray = { a, b, c, d, 45, 12 };
+
+    Console.WriteLine(intArray[2]);
+    //wybranie ostatniego elementu tablicy
+    Console.WriteLine(intArray[intArray.Length - 1]);
+
+    intArray[2] = 99;
+    Console.WriteLine(intArray[2]);
+
+    //utworzylismy pustą tablicę o rozmiarze 2
+    //pusta tablica - wypełniona wartościami domyślnymi
+    intArray = new int[2];
+
+    //string to tablica char[]
+    Console.WriteLine("ala ma kota"[2]);
+
+    //zmiana rozmiaru rablicy - powoduje utworzenie nowej na podstawie wskazanej i przepięcie referencji
+    Array.Resize(ref intArray, 4);
+    Console.WriteLine(intArray[3]);
+
+
+    //utworzenie nowej pustej listy
+    List<float> floatList = new List<float>();
+
+    floatList.Add(3.14f);
+    floatList.Add(5f);
+    floatList.Add(1f);
+    floatList.Add(7.23f);
+    floatList.Add(3.2f);
+
+    Console.WriteLine(floatList[2]);
+
+    //usuwanie wartości 5
+    floatList.Remove(5);
+
+    //usuwanie elementu o index 2
+    floatList.RemoveAt(2);
+
+
+    floatList = new List<float>() { intArray[0], 13, floatList[2] };
+    Console.WriteLine(floatList[0]);
+    Console.WriteLine(floatList[1]);
+    Console.WriteLine(floatList[2]);
+
+    floatList.Clear();
+
+
+    string input = Console.ReadLine();
+    string[] strings = input.Split(" ");
+    Console.WriteLine(strings[strings.Length - 1]);
+    Array.Reverse(strings);
+    Console.WriteLine(string.Join(" ", strings));
 
 }
 
@@ -296,7 +355,7 @@ void StringDemo()
 
     //deklaracja z inicjalizacją
     string worldVariable = "World";
-    
+
 
     Console.WriteLine(helloVariable);
     Console.WriteLine(worldVariable);
@@ -361,7 +420,7 @@ void StringDemo()
     string sentence = "ala ma kota";
     sentence = sentence.Substring(0, sentence.Length - 1);
     Console.WriteLine(sentence);
-    
+
     //porównanie stringów
     Console.WriteLine("a" == "A");
     //porównanie z ignorowaniem wielkości liter
