@@ -1,81 +1,125 @@
 ﻿using System.Globalization;
 
-int value = int.Parse(Console.ReadLine());
-
-// == - porównanie
-// = - przypisanie
-if(value == 0)
-{
-    Console.WriteLine("Wprowadzona wartość jest równa 0");
-}
-Console.WriteLine("--");
-if (value > 0)
-{
-    Console.WriteLine("Wprowadzona wartość jest większa niż 0");
-}
-else
-{
-    Console.WriteLine("Wartość jest mniejsza lub równa 0");
-}
-
-Console.WriteLine("--");
-if (value > 0)
-{
-    Console.WriteLine("Wprowadzona wartość jest większa niż 0");
-}
-else if(value < 0)
-{
-    Console.WriteLine("Wprowadzona wartość jest mniejsza niż 0");
-}
-else
-{
-    Console.WriteLine("Wartość jest równa 0");
-}
-
-Console.WriteLine("--");
-if (value > 0)
-{
-    Console.WriteLine("Wprowadzona wartość jest większa niż 0");
-}
-if (value < 0)
-{
-    Console.WriteLine("Wprowadzona wartość jest mniejsza niż 0");
-}
-
-// ! - negacja
-if (value != 0)
-{
-    Console.WriteLine("Wprowadzona wartość jest różna od 0");
-}
-
-// || - lub
-if (value > 0 || value < 0)
-{
-    Console.WriteLine("Wprowadzona wartość jest różna od 0");
-}
-
-
-if (value > 5 && value <= 10)
-{
-    Console.WriteLine("Wprowadzona wartość jest z przedziału (5;10>");
-}
-
-
-
-
+Console.WriteLine("Jak masz na imię?");
 string input = Console.ReadLine();
-int intValue;
 
-//TryParse zwraca informacje czy parsowanie się udało, jeśli tak to wartość trafia do parametru wyjściowego (out)
-if(!int.TryParse(input, out intValue))
+/*if (input == "")
 {
-    Console.WriteLine("Wprowadzonej wartości nie można przestawić jako int");
+    Console.WriteLine("Szkoda, że nie chcesz go podać...");
+}
+else if (input == "Siri" || input == "Google")
+{
+    Console.WriteLine("Hej masz na imię tak jak elektroniczny asystent!");
+}
+else if (input == "Alexa")
+{
+    Console.WriteLine("Hej masz na imię tak jak elektroniczny asystent Amazona!");
 }
 else
 {
-    Console.WriteLine(intValue);
+    Console.WriteLine($"Witaj, {input}!");
+}*/
+
+switch (input)
+{
+    case "":
+        Console.WriteLine("Szkoda, że nie chcesz go podać...");
+        break;
+    case "Siri":
+    case "Google":
+        Console.WriteLine("Hej masz na imię tak jak elektroniczny asystent!");
+        break;
+    case "Alexa":
+        Console.WriteLine("Hej masz na imię tak jak elektroniczny asystent Amazona!");
+        break;
+    default:
+        Console.WriteLine($"Witaj, {input}!");
+        break;
 }
 
+
+
+
+void IfElseDemo()
+    {
+
+        int value = int.Parse(Console.ReadLine());
+
+        // == - porównanie
+        // = - przypisanie
+        if (value == 0)
+        {
+            Console.WriteLine("Wprowadzona wartość jest równa 0");
+        }
+        Console.WriteLine("--");
+        if (value > 0)
+        {
+            Console.WriteLine("Wprowadzona wartość jest większa niż 0");
+        }
+        else
+        {
+            Console.WriteLine("Wartość jest mniejsza lub równa 0");
+        }
+
+        Console.WriteLine("--");
+        if (value > 0)
+        {
+            Console.WriteLine("Wprowadzona wartość jest większa niż 0");
+        }
+        else if (value < 0)
+        {
+            Console.WriteLine("Wprowadzona wartość jest mniejsza niż 0");
+        }
+        else
+        {
+            Console.WriteLine("Wartość jest równa 0");
+        }
+
+        Console.WriteLine("--");
+        if (value > 0)
+        {
+            Console.WriteLine("Wprowadzona wartość jest większa niż 0");
+        }
+        if (value < 0)
+        {
+            Console.WriteLine("Wprowadzona wartość jest mniejsza niż 0");
+        }
+
+        // ! - negacja
+        if (value != 0)
+        {
+            Console.WriteLine("Wprowadzona wartość jest różna od 0");
+        }
+
+        // || - lub
+        if (value > 0 || value < 0)
+        {
+            Console.WriteLine("Wprowadzona wartość jest różna od 0");
+        }
+
+
+        if (value > 5 && value <= 10)
+        {
+            Console.WriteLine("Wprowadzona wartość jest z przedziału (5;10>");
+        }
+
+
+
+
+        string input = Console.ReadLine();
+        int intValue;
+
+        //TryParse zwraca informacje czy parsowanie się udało, jeśli tak to wartość trafia do parametru wyjściowego (out)
+        if (!int.TryParse(input, out intValue))
+        {
+            Console.WriteLine("Wprowadzonej wartości nie można przestawić jako int");
+        }
+        else
+        {
+            Console.WriteLine(intValue);
+        }
+
+    }
 
 
 void Collections() { 
