@@ -1,58 +1,112 @@
 ﻿using System.Globalization;
 
-//sprawdzamy, czy sekunda na zegarze jest przysta
-bool exit = DateTime.Now.Second % 2 == 0;
+//I - inicjalizacja pętli - wykonuje tylko raz na początku
+//II - warunek kontynuacji - wykonuje się przed ciałem
+//III - ciało pętli
+//IV - akcja po wykonaniu ciała - najczęściej jest to inkrementacja licznik
 
-//pętla while sprawdza warunek przez wejściem do ciała (może się nigdy nie wkonać)
+// for(I; II; IV) {
+// III
+// }
 
-while (!exit)
+for (int i = 0; i < 5; i = i + 1)
 {
-    Console.Write("while: ");
-    string input = Console.ReadLine();
-
-    switch (input)
-    {
-        case "exit":
-            exit = true;
-            break;
-        default:
-            Console.WriteLine(input);
-            break;
-    }
-
+    Console.WriteLine(i);
 }
 
-exit = false;
-//do-while - sprawdza warunek po wykonaniu ciała - zapewnie wykonanie co najmniej raz
-do
+int startIndex = int.Parse(Console.ReadLine());
+
+// pomijamy etap I
+for(;startIndex < 5; startIndex++)
 {
-    Console.Write("do-while: ");
-    string input = Console.ReadLine();
+    Console.WriteLine(startIndex);
+}
 
-    if (input == "exit")
-    {
-        exit = true;
-    }
-    else if(input == "break")
-    {
-        //break przerywa wykonywanie ciała pętli i całą pętle
-        break;
-    }
-    else if (input == "continue")
-    {
-        //continue przerywa wykonywanie ciała i kontynuuje pętle (przechodzi do sprawdzenia warunku)
+startIndex = int.Parse(Console.ReadLine());
+//pomijamy etap I i IV
+for (; startIndex < 5;)
+{
+    Console.WriteLine(++startIndex);
+}
+
+//pętla nieskończona - pomijamy etap I, II, IV
+/*for(;;)
+{
+    Console.WriteLine("*");
+}*/
+
+
+string input = Console.ReadLine();
+string[] splited = input.Split(' ');
+//wypisujemy co drugi wyraz od końca
+for(int i = splited.Length - 1; i >= 0; i = i - 2)
+{
+    Console.WriteLine(splited[i]);
+}
+
+//wypisujemy każdy wyraz
+for (int i = 0; i < splited.Length; i++)
+{
+    string word = splited[i];
+    Console.WriteLine(word);
+}
+
+//wypisujemy kazdy wyraz za pomocą foreach
+foreach(string word in splited)
+{ 
+    Console.WriteLine(word);
+}
+
+//wypisujemy wyrazy o ilości liter mniejszej niż 3
+foreach (string word in splited)
+{
+    if (word.Length > 2)
         continue;
-    }
-    else
+
+    Console.WriteLine(word);
+}
+
+
+
+void WhileDoWhileDemo()
+{
+
+    //sprawdzamy, czy sekunda na zegarze jest przysta
+    bool exit = DateTime.Now.Second % 2 == 0;
+
+    //pętla while sprawdza warunek przez wejściem do ciała (może się nigdy nie wkonać)
+
+    while (!exit)
     {
-        Console.WriteLine(input);
+        Console.Write("while: ");
+        string input = Console.ReadLine();
+
+        switch (input)
+        {
+            case "exit":
+                exit = true;
+                break;
+            default:
+                Console.WriteLine(input);
+                break;
+        }
+
     }
 
-    Console.WriteLine("End of do-while");
-} while (!exit);
+    exit = false;
+    //do-while - sprawdza warunek po wykonaniu ciała - zapewnie wykonanie co najmniej raz
+    do
+    {
+        Console.Write("do-while: ");
+        string input = Console.ReadLine();
 
-Console.WriteLine("End of program");
 
+
+        Console.WriteLine("End of do-while");
+    } while (!exit);
+
+    Console.WriteLine("End of program");
+}
 
 void SwitchDemo()
 {
